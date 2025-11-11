@@ -1,19 +1,19 @@
 pipeline {
-    agent { label "dev" }
+    agent {label "dev"}
 
     environment {
         IMAGE_NAME = "notes-app:latest"
         CONTAINER_NAME = "notes-app-container"
         PORT = "9092"
-        HOST = "13.235.73.101"
-        DOCKER_USER = "satyamsri"
+        HOST = "65.2.153.48"
+        DOCKER_USER = "sp2328"
     }
 
     stages {
 
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/Satyams-git/notes-app.git'
+                git branch: 'master', url: 'https://github.com/spraharaj/notes-app.git'
             }
         }
 
@@ -82,7 +82,7 @@ pipeline {
             emailext(
                 subject:"Build Successfull",
                 body:"Congrats! Build was successfull",
-                to:'satyam.hikearts@gmail.com'
+                to:'subhampraharaj@gmail.com'
             )
         }
         failure {
@@ -90,8 +90,9 @@ pipeline {
             emailext(
                 subject:"Build was failed",
                 body:"Oops! Build Failed",
-                to: "satyam.hikearts@gmail.com"
+                to: "subhampraharaj@gmail.com"
             )
+            
         }
     }
 }
